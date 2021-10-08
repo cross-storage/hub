@@ -21,8 +21,17 @@ function InitIndexDB() {
     window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.OIDBTransaction || window.msIDBTransaction;
 }
 
+function MakeKey(Key) {
+    if(window.settings["domain_prefix"])
+    {
+        return window.location.hostname.replace(".", "_") + Key;
+    }
+
+    return Key;
+}
 
 export function StoreageSet(Key, Data) {
+    Key = MakeKey(Key);
     var Backend = WhatBackEnd();
     if(Backend === BACKENDS.LocalStorage)
     {
@@ -31,6 +40,7 @@ export function StoreageSet(Key, Data) {
 }
 
 export function StoreageGet(Key) {
+    Key = MakeKey(Key);
     var Backend = WhatBackEnd();
     if(Backend === BACKENDS.LocalStorage)
     {

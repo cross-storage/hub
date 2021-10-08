@@ -1,10 +1,18 @@
 {
-    "*": {
-        "read": [
-            "*"
-        ],
-        "write": [
-            "*"
-        ]
+    "settings":
+    {
+        "domain_prefix": true
+    },
+    "endpints":
+    {
+
+        "*": {
+            "read": [
+                "*"
+            ],
+            "write": [
+                "*"
+            ]
+        }
     }
 }
